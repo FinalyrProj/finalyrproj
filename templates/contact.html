@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+Contact Page
+{% endblock title %}
+
+
+{% block body %}
+
+<div class="slideshow-container">
+    <div class="mySlides fade">
+    <img src="/static/img/contact.jfif" style="width:100%">
+</div> 
+
+<div class="container" style="padding-top: 20px; padding-bottom: 30px;"> 
+    <h3 class="text-center">Contact Us</h3>
+    <form style="padding-left:200px; padding-right: 200px;" method="post" action="/contactus">
+        {% csrf_token %} {% comment %}  Verify token whether data coming from valid site {% endcomment %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Username">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Mobile No.</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter mobile No.">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Comments</label>
+            <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% load static %}
+<script src="{% static '/js/base.js' %}"></script>
+
+{% endblock body %}
